@@ -9,7 +9,13 @@
 function mapPromise(promise, transformer){
   return new Promise((resolve, reject) => {
     /* IMPLEMENT ME!! */
-  });
+    
+     promise.then(resolve =>{
+      transformer(resolve).then(resolve).catch(reject);
+    }).catch(err => {
+      reject(err);
+    });
+ });
 }
 
 /**
